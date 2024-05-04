@@ -12,6 +12,8 @@ const {
   loginUser,
 } = require("../controllers/user.controller");
 
+const authenticateToken = require("../middleware/auth.js");
+
 // create a new user
 router.post("/", validateSignUpForm, createUser);
 
@@ -19,9 +21,9 @@ router.post("/", validateSignUpForm, createUser);
 router.post("/login", validateLoginForm, loginUser);
 
 // get all users
-router.get("/", getAllUsers);
+router.get("/", authenticateToken, getAllUsers);
 
 // get user by id
-router.get("/:userId", getUserById);
+router.get("/:userId", authenticateToken, getUserById);
 
 module.exports = router;

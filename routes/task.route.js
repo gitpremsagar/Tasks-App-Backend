@@ -19,18 +19,18 @@ router.post("/", createTask);
 router.get("/", authenticateToken, getAllTasks);
 
 // get task by id
-router.get("/:taskId", getTaskById);
+router.get("/:taskId", authenticateToken, getTaskById);
 
 // get tasks by user id
-router.get("/user/:userId", getTaskByUserId);
+router.get("/user/:userId", authenticateToken, getTaskByUserId);
 
 // get tasks by project name
-router.get("/project/:projectName", getTasksByProjectName);
+router.get("/project/:projectName", authenticateToken, getTasksByProjectName);
 
 // update task by id
-router.put("/:taskId", updateTaskById);
+router.put("/:taskId", authenticateToken, updateTaskById);
 
 // delete task by id
-router.delete("/:taskId", deleteTaskById);
+router.delete("/:taskId", authenticateToken, deleteTaskById);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authenticateToken = require("../middleware/auth.js");
 
 const {
   createProject,
@@ -8,12 +9,12 @@ const {
 } = require("../controllers/project.controller");
 
 // create a new project
-router.post("/", createProject);
+router.post("/", authenticateToken, createProject);
 
 // get all projects
-router.get("/", getAllProjects);
+router.get("/", authenticateToken, getAllProjects);
 
 // delete project by id
-router.delete("/:projectId", deleteProjectById);
+router.delete("/:projectId", authenticateToken, deleteProjectById);
 
 module.exports = router;
