@@ -11,10 +11,12 @@ app.use(cors());
 // route handlers
 const userRouteHandler = require("./routes/user.route");
 const taskRouteHandler = require("./routes/task.route");
+const projectRouteHandler = require("./routes/project.route");
 
 // routes
 app.use("/users", userRouteHandler);
 app.use("/tasks", taskRouteHandler);
+app.use("/projects", projectRouteHandler);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

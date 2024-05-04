@@ -139,4 +139,5 @@ module.exports = {
   sequelize,
   User,
   Task,
+  Project,
 };
