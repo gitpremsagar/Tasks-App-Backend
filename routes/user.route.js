@@ -1,15 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const { validateLoginForm } = require("../middleware/user.middleware");
+const {
+  validateSignUpForm,
+  validateLoginForm,
+} = require("../middleware/user.middleware");
 
 const {
   createUser,
   getAllUsers,
   getUserById,
+  loginUser,
 } = require("../controllers/user.controller");
 
 // create a new user
-router.post("/", validateLoginForm, createUser);
+router.post("/", validateSignUpForm, createUser);
+
+// login user
+router.post("/login", validateLoginForm, loginUser);
 
 // get all users
 router.get("/", getAllUsers);

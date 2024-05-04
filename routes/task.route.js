@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authenticateToken = require("../middleware/auth");
 
 const {
   createTask,
@@ -15,7 +16,7 @@ const {
 router.post("/", createTask);
 
 // get all tasks
-router.get("/", getAllTasks);
+router.get("/", authenticateToken, getAllTasks);
 
 // get task by id
 router.get("/:taskId", getTaskById);

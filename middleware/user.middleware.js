@@ -1,5 +1,5 @@
 // validate login form
-const validateLoginForm = (req, res, next) => {
+const validateSignUpForm = (req, res, next) => {
   const { email, password, confirmPassword, userType } = req.body;
 
   if (!email) {
@@ -33,4 +33,18 @@ const validateLoginForm = (req, res, next) => {
   next();
 };
 
-module.exports = { validateLoginForm };
+const validateLoginForm = (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  if (!password) {
+    return res.status(400).json({ error: "Password is required" });
+  }
+
+  next();
+};
+
+module.exports = { validateSignUpForm, validateLoginForm };
