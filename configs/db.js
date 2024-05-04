@@ -87,12 +87,6 @@ const Task = sequelize.define("tasks", {
   updatedBy: {
     type: Sequelize.STRING,
   },
-  createdAt: {
-    type: Sequelize.DATE,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-  },
 });
 
 // Create the tasks table
@@ -116,12 +110,6 @@ const Project = sequelize.define("projects", {
   },
   projectDescription: {
     type: Sequelize.STRING,
-  },
-  createdAt: {
-    type: Sequelize.DATE,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
   },
 });
 

@@ -14,9 +14,9 @@ const taskRouteHandler = require("./routes/task.route");
 const projectRouteHandler = require("./routes/project.route");
 
 // routes
-app.use("/users", userRouteHandler);
-app.use("/tasks", taskRouteHandler);
-app.use("/projects", projectRouteHandler);
+app.use("/api/users", userRouteHandler);
+app.use("/api/tasks", taskRouteHandler);
+app.use("/api/projects", projectRouteHandler);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
