@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { validateLoginForm } = require("../middleware/user.middleware");
 
 const {
   createUser,
@@ -8,7 +9,7 @@ const {
 } = require("../controllers/user.controller");
 
 // create a new user
-router.post("/", createUser);
+router.post("/", validateLoginForm, createUser);
 
 // get all users
 router.get("/", getAllUsers);

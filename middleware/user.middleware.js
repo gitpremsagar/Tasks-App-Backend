@@ -1,6 +1,6 @@
 // validate login form
 const validateLoginForm = (req, res, next) => {
-  const { email, password, confirmPassword, userRoll } = req.body;
+  const { email, password, confirmPassword, userType } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
@@ -10,7 +10,7 @@ const validateLoginForm = (req, res, next) => {
     return res.status(400).json({ error: "Password is required" });
   }
 
-  if (!userRoll) {
+  if (!userType) {
     return res.status(400).json({ error: "User Roll is required" });
   }
 
