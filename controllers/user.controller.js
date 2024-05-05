@@ -119,4 +119,15 @@ const getUserById = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getAllUsers, getUserById, loginUser };
+const sendDecodedToken = (req, res) => {
+  // send decoded token
+  res.json(req.user);
+};
+
+module.exports = {
+  createUser,
+  getAllUsers,
+  getUserById,
+  loginUser,
+  sendDecodedToken,
+};

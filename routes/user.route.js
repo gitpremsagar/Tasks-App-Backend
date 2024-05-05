@@ -10,6 +10,7 @@ const {
   getAllUsers,
   getUserById,
   loginUser,
+  sendDecodedToken,
 } = require("../controllers/user.controller");
 
 const authenticateToken = require("../middleware/auth.js");
@@ -19,6 +20,9 @@ router.post("/", validateSignUpForm, createUser);
 
 // login user
 router.post("/login", validateLoginForm, loginUser);
+
+// verify token
+router.post("/verify-token", authenticateToken, sendDecodedToken);
 
 // get all users
 router.get("/", authenticateToken, getAllUsers);
