@@ -35,6 +35,18 @@ const getAllProjects = async (req, res) => {
 };
 
 // get project by id
+const getProjectById = async (req, res) => {
+  const { projectId } = req.params;
+  try {
+    const project = await Project.findByPk(projectId);
+    if (!project) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+    res.status(200).json(project);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 // update project by id
 
@@ -53,4 +65,9 @@ const deleteProjectById = async (req, res) => {
   }
 };
 
-module.exports = { createProject, getAllProjects, deleteProjectById };
+module.exports = {
+  createProject,
+  getAllProjects,
+  deleteProjectById,
+  getProjectById,
+};
