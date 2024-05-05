@@ -22,7 +22,7 @@ router.post("/", validateSignUpForm, createUser);
 router.post("/login", validateLoginForm, loginUser);
 
 // verify token
-router.post("/verify-token", authenticateToken, sendDecodedToken);
+router.get("/verify-token", authenticateToken, sendDecodedToken);
 
 // get all users
 router.get("/", authenticateToken, getAllUsers);

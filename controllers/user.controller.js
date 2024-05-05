@@ -121,6 +121,7 @@ const getUserById = async (req, res) => {
 
 const sendDecodedToken = (req, res) => {
   // send decoded token
+  console.log("decoded token on route handler", req.user);
   res.json(req.user);
 };
 
