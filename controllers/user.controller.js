@@ -50,14 +50,14 @@ const loginUser = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({ error: "User not found" });
+      return res.status(401).json({ error: "User not found" });
     }
 
     // compare the password
     const match = await bcrypt.compare(req.body.password, user.password);
 
     if (!match) {
-      return res.status(400).json({ error: "Invalid password" });
+      return res.status(401).json({ error: "Invalid password" });
     }
 
     // console.log("userId = ", user.dataValues.userId);
