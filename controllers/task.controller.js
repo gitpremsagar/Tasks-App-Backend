@@ -49,6 +49,17 @@ const getTasksByProjectName = async (req, res) => {
   }
 };
 
+const getTasksByProjectId = async (req, res) => {
+  try {
+    const tasks = await Task.findAll({
+      where: { projectId: req.params.projectId },
+    });
+    res.status(200).json(tasks);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const updateTaskById = async (req, res) => {
   try {
     const task = await Task.findByPk(req.params.taskId);
@@ -85,4 +96,5 @@ module.exports = {
   updateTaskById,
   deleteTaskById,
   getTasksByProjectName,
+  getTasksByProjectId,
 };

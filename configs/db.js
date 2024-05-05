@@ -53,7 +53,7 @@ User.sync()
     console.error("Error creating users table:", error);
   });
 
-//   create tasks table
+//   create tasks table schema
 const Task = sequelize.define("tasks", {
   taskId: {
     type: Sequelize.INTEGER,
@@ -62,6 +62,9 @@ const Task = sequelize.define("tasks", {
   },
   projectName: {
     type: Sequelize.STRING,
+  },
+  projectId: {
+    type: Sequelize.INTEGER,
   },
   taskName: {
     type: Sequelize.STRING,

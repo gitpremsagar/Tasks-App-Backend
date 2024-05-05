@@ -10,6 +10,7 @@ const {
   updateTaskById,
   deleteTaskById,
   getTasksByProjectName,
+  getTasksByProjectId,
 } = require("../controllers/task.controller");
 
 // create a new task
@@ -26,6 +27,9 @@ router.get("/user/:userId", authenticateToken, getTaskByUserId);
 
 // get tasks by project name
 router.get("/project/:projectName", authenticateToken, getTasksByProjectName);
+
+// get tasks by project id
+router.get("/project/:projectId", authenticateToken, getTasksByProjectId);
 
 // update task by id
 router.put("/:taskId", authenticateToken, updateTaskById);
