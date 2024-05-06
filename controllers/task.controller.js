@@ -62,13 +62,27 @@ const getTasksByProjectName = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 const getTasksByProjectId = async (req, res) => {
   try {
     const tasks = await Task.findAll({
       where: { projectId: req.params.projectId },
     });
-    res.status(200).json(tasks);
+
+    const tasksWithAssignedUserName = await Promise.all(
+      tasks.map(async (task) => {
+        const user = await User.findOne({
+          where: { userId: task.assignedTo },
+          attributes: ["firstName", "lastName"],
+        });
+
+        return {
+          ...task.get({ plain: true }),
+          assignedTo: user ? `${user.firstName} ${user.lastName}` : null,
+        };
+      })
+    );
+
+    res.status(200).json(tasksWithAssignedUserName);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
