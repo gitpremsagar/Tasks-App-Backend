@@ -18,7 +18,7 @@ const authenticateToken = (req, res, next) => {
     // Attach the decoded user information to the request object
     req.user = decoded;
 
-    // console.log("decoded token = ", decoded);
+    console.log("decoded JWT token = ", decoded);
 
     // Call the next middleware or route handler
     next();

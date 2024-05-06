@@ -14,7 +14,7 @@ const {
 } = require("../controllers/task.controller");
 
 // create a new task
-router.post("/", createTask);
+router.post("/", authenticateToken, createTask);
 
 // get all tasks
 router.get("/", authenticateToken, getAllTasks);
@@ -26,10 +26,14 @@ router.get("/:taskId", authenticateToken, getTaskById);
 router.get("/user/:userId", authenticateToken, getTaskByUserId);
 
 // get tasks by project name
-router.get("/project/:projectName", authenticateToken, getTasksByProjectName);
+router.get(
+  "/project-name/:projectName",
+  authenticateToken,
+  getTasksByProjectName
+);
 
 // get tasks by project id
-router.get("/project/:projectId", authenticateToken, getTasksByProjectId);
+router.get("/project-id/:projectId", authenticateToken, getTasksByProjectId);
 
 // update task by id
 router.put("/:taskId", authenticateToken, updateTaskById);
